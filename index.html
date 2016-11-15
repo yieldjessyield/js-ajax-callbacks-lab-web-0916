@@ -20,6 +20,10 @@
   </head>
   <body>
     <main id="main">
+    <form>
+      <input type="text" name="searchTerms" id="#"/>
+      <a href="#" onclick="searchRepositories()">Search Repositories</a>
+    </form>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -35,5 +39,21 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <script id='repo-template' type="text/x-handlebars-template">
+    <ul>
+      {{#each this}}
+        <li><h3>{{full_name}}</h3>
+        {{description}}
+        <a href="{{html_url}}">HTML URL</a></li>
+        <p>
+        <img src="{{owner.avatar_url}}">
+        <a href="{{owner.url}}">{{owner.login}}</a>
+        </p>
+        <a href="#" data-repo_name="{{}}" onclick='showCommits(this)'>
+        {{/each}}
+    </ul>
+    </script>
+
   </body>
 </html>
